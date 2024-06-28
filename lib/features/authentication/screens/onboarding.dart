@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:pkart/utils/constants/colors.dart';
 import 'package:pkart/utils/constants/image_strings.dart';
 import 'package:pkart/utils/constants/text_strings.dart';
@@ -133,7 +133,7 @@ class OnboardingNextButton extends StatelessWidget {
       bottom: TDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
         onPressed: (){},
-        style: ElevatedButton.styleFrom(shape:  const CircleBorder(),backgroundColor: dark ? TColors.primaryColor : Colors.black), child: const Icon(Iconsax.arrow_right3),
+        style: ElevatedButton.styleFrom(shape:  const CircleBorder(),backgroundColor: dark ? TColors.primaryColor : Colors.black), child: const Icon(Iconsax.arrow_right_3),
       ),
     );
   }

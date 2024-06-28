@@ -33,7 +33,8 @@ dependencies:
 
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
-  iconsax: ^0.0.8
+  iconsax_flutter: ^1.0.0
+
 
 
   
