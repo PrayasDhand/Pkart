@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:get/get.dart';
+import 'package:pkart/features/authentication/controllers/onboarding_controller.dart';
 import 'package:pkart/utils/constants/colors.dart';
 import 'package:pkart/utils/constants/image_strings.dart';
 import 'package:pkart/utils/constants/text_strings.dart';
@@ -12,10 +13,14 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnboardingController());
+
     return Scaffold(
       body: Stack(
         children: [
           PageView(
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
             children: const [
               OnboardingWidget(
                 image: TImages.onboardingImage1,
@@ -44,30 +49,30 @@ class OnboardingScreen extends StatelessWidget {
 }
 
 class OnboardingDotNavigation extends StatelessWidget {
-  const OnboardingDotNavigation({
-    super.key,
-  });
+  const OnboardingDotNavigation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = OnboardingController.instance;
     final dark = THelperFunctions.isDarkMode(context);
     return Positioned(
       bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
       left: 16,
       child: SmoothPageIndicator(
-        controller: PageController(),
+        controller: controller.pageController,
+        onDotClicked: (index) => controller.dotNavigationClick(index),
         count: 3,
         effect: ExpandingDotsEffect(
-            activeDotColor: dark ? TColors.light : TColors.dark, dotHeight: 6),
+          activeDotColor: dark ? TColors.light : TColors.dark,
+          dotHeight: 6,
+        ),
       ),
     );
   }
 }
 
 class OnboardingSkip extends StatelessWidget {
-  const OnboardingSkip({
-    super.key,
-  });
+  const OnboardingSkip({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +80,7 @@ class OnboardingSkip extends StatelessWidget {
       top: TDeviceUtils.getAppBarHeight(),
       right: 15,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () => OnboardingController.instance.skipPage(),
         child: const Text('Skip'),
       ),
     );
@@ -132,8 +137,11 @@ class OnboardingNextButton extends StatelessWidget {
       right: 16,
       bottom: TDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
-        onPressed: (){},
-        style: ElevatedButton.styleFrom(shape:  const CircleBorder(),backgroundColor: dark ? TColors.primaryColor : Colors.black), child: const Icon(Iconsax.arrow_right_3),
+        onPressed: () => OnboardingController.instance.nextPage(),
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(), backgroundColor: dark ? TColors.primaryColor : Colors.black,
+        ),
+        child: const Icon(Icons.arrow_forward),
       ),
     );
   }
