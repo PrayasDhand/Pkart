@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image(
-                    height: 150,
+                    height: 200,
                     image: AssetImage(
                         dark ? TImages.lightAppLogo : TImages.darkAppLogo),
                   ),
@@ -41,7 +41,10 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Iconsax.direct_right),
+                            prefixIcon:Icon(Iconsax.direct_right),
+                            labelStyle: TextStyle(color: Colors.white),
+                            floatingLabelStyle: TextStyle(color: Colors.white),
+
                             labelText: 'Email'),
                       ),
                       const SizedBox(
@@ -51,6 +54,9 @@ class LoginScreen extends StatelessWidget {
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Iconsax.password_check),
                           labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
+
                           suffixIcon: Icon(Iconsax.eye_slash),
                         ),
                       ),
@@ -89,9 +95,7 @@ class LoginScreen extends StatelessWidget {
                           child: ElevatedButton(
                               onPressed: () {},
                               child: const Text("Create Account"))),
-                      const SizedBox(
-                        height: 32,
-                      ),
+                     
                     ],
                   ),
                 ),
@@ -99,7 +103,10 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Divider(color: dark ? Colors.blueGrey: Colors.grey,thickness: 0.5,indent: 60,endIndent: 5,),
+                  Flexible(child: Divider(color: dark ? Colors.blueGrey: Colors.grey,thickness: 1,indent: 60,endIndent: 5,)),
+                   Text("Or Sign in With", style: Theme.of(context).textTheme.labelMedium,),
+                  Flexible(child: Divider(color: dark ? Colors.blueGrey: Colors.grey,thickness: 1,indent: 5,endIndent: 60,)),
+
                 ],
               )
             ],

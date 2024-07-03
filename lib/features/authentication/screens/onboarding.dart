@@ -49,7 +49,7 @@ class OnboardingScreen extends StatelessWidget {
 }
 
 class OnboardingDotNavigation extends StatelessWidget {
-  const OnboardingDotNavigation({Key? key}) : super(key: key);
+  const OnboardingDotNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {
