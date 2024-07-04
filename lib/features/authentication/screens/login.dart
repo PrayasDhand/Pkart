@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:pkart/common/styles/spacing_styles.dart';
+import 'package:pkart/features/authentication/screens/signup.dart';
 
 import 'package:pkart/utils/constants/image_strings.dart';
 import 'package:pkart/utils/helpers/helper_functions.dart';
@@ -41,10 +43,9 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon:Icon(Iconsax.direct_right),
+                            prefixIcon: Icon(Iconsax.direct_right),
                             labelStyle: TextStyle(color: Colors.white),
                             floatingLabelStyle: TextStyle(color: Colors.white),
-
                             labelText: 'Email'),
                       ),
                       const SizedBox(
@@ -56,7 +57,6 @@ class LoginScreen extends StatelessWidget {
                           labelText: 'Password',
                           labelStyle: TextStyle(color: Colors.white),
                           floatingLabelStyle: TextStyle(color: Colors.white),
-
                           suffixIcon: Icon(Iconsax.eye_slash),
                         ),
                       ),
@@ -93,9 +93,8 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: ()=> Get.to(()=> const SignupScreen()),
                               child: const Text("Create Account"))),
-                     
                     ],
                   ),
                 ),
@@ -103,12 +102,65 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Flexible(child: Divider(color: dark ? Colors.blueGrey: Colors.grey,thickness: 1,indent: 60,endIndent: 5,)),
-                   Text("Or Sign in With", style: Theme.of(context).textTheme.labelMedium,),
-                  Flexible(child: Divider(color: dark ? Colors.blueGrey: Colors.grey,thickness: 1,indent: 5,endIndent: 60,)),
-
+                  Flexible(
+                      child: Divider(
+                    color: dark ? Colors.blueGrey : Colors.grey,
+                    thickness: 1,
+                    indent: 60,
+                    endIndent: 5,
+                  )),
+                  Text(
+                    "Or Sign in With",
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  Flexible(
+                      child: Divider(
+                    color: dark ? Colors.blueGrey : Colors.grey,
+                    thickness: 1,
+                    indent: 5,
+                    endIndent: 60,
+                  )),
                 ],
-              )
+              ),
+              const SizedBox(height: 16,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(width:25 ,height: 25,image: AssetImage(TImages.facebookLogo)),
+                    ),
+                  ),
+                  const SizedBox(width: 16,),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(width:25 ,height: 25,image: AssetImage(TImages.googleLogo)),
+                    ),
+                  ),
+                  const SizedBox(width: 16,),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(width:25 ,height: 25,image: AssetImage(TImages.githubLogo)),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
